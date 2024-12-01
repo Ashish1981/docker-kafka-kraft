@@ -1,6 +1,6 @@
 services:
   kafka:
-    image: moeenz/docker-kafka-kraft:latest
+    image: ashish1981/docker-kafka-kraft:latest
     restart: always
     ports:
       - "9093:9093"

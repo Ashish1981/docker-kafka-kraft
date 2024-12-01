@@ -18,7 +18,8 @@ RUN set -eux ; \
 
 RUN curl -o kafka.tgz https://mirrors.ocf.berkeley.edu/apache/kafka/${kafkaversion}/kafka_${scalaversion}-${kafkaversion}.tgz \
     && tar xvzf kafka.tgz \
-    && mv kafka_${scalaversion}-${kafkaversion} kafka
+    && mv kafka_${scalaversion}-${kafkaversion} kafka \
+    && mkdir -p /opt/kafka/data
 
 WORKDIR /opt/kafka
 
@@ -26,5 +27,5 @@ COPY ./configs/server.properties ./config/kraft
 COPY ./*.sh .
 
 EXPOSE 9092 9093
-
+VOLUME [ "/opt/kafka/data" , "/opt/kafka/logs", "/opt/kafka/config/kraft"]
 ENTRYPOINT [ "./docker-entrypoint.sh" ]

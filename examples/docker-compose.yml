@@ -9,3 +9,7 @@ services:
       - KRAFT_CREATE_TOPICS=topic-a,topic-b,topic-c
       - KRAFT_PARTITIONS_PER_TOPIC=3
       - KRAFT_AUTO_CREATE_TOPICS=true
+    volumes:
+      - ./data:/opt/kafka/data
+      - ./logs:/opt/kafka/logs
+      - ./config:/opt/kafka/config/kraft
